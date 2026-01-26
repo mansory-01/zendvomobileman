@@ -8,6 +8,7 @@ import 'package:zendvo/core/constants/app_spacing.dart';
 import 'package:zendvo/core/utils/size_config.dart';
 import 'package:zendvo/features/auth/presentation/bloc/email_verification/email_verification_bloc.dart';
 import 'package:zendvo/features/auth/presentation/widgets/otp_input_widget.dart';
+import 'package:zendvo/core/widgets/app_button.dart';
 
 class EmailVerificationScreen extends StatelessWidget {
   final String email;
@@ -24,6 +25,8 @@ class EmailVerificationScreen extends StatelessWidget {
         backgroundColor: AppColors.getBackgroundColor(context),
         body: SafeArea(
           child: BlocConsumer<EmailVerificationBloc, EmailVerificationState>(
+            listenWhen: (previous, current) =>
+                previous.status != current.status,
             listener: (context, state) {
               if (state.status == EmailVerificationStatus.success) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -68,8 +71,6 @@ class EmailVerificationScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (state.status == EmailVerificationStatus.loading)
-                    _buildLoadingOverlay(),
                 ],
               );
             },
@@ -99,7 +100,7 @@ class EmailVerificationScreen extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: AppColors.primary,
+            color: AppColors.darkBackground,
           ),
         ),
       ],
@@ -122,8 +123,8 @@ class EmailVerificationScreen extends StatelessWidget {
         Text(
           "${AppStrings.verifyEmailSubtitle} $email",
           style: TextStyle(
-            fontSize: 14,
-            color: AppColors.getBodyTextColor(context),
+            fontSize: 12,
+            color: AppColors.getHeadingTextColor(context),
             height: 1.5,
           ),
         ),
@@ -156,7 +157,7 @@ class EmailVerificationScreen extends StatelessWidget {
             Text(
               AppStrings.resendCode,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 16,
                 color: state.canResend
                     ? AppColors.primary
                     : AppColors.getBodyTextColor(context),
@@ -186,26 +187,11 @@ class EmailVerificationScreen extends StatelessWidget {
   ) {
     return Column(
       children: [
-        SizedBox(
-          width: double.infinity,
-          height: AppSpacing.buttonHeight,
-          child: ElevatedButton(
-            onPressed: state.status == EmailVerificationStatus.loading
-                ? null
-                : () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primary,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppSpacing.borderRadius),
-              ),
-              elevation: 0,
-            ),
-            child: const Text(
-              AppStrings.verifyButton,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-            ),
-          ),
+        AppButton(
+          height: 48,
+          text: AppStrings.verifyButton,
+          onPressed: () {},
+          isLoading: state.status == EmailVerificationStatus.loading,
         ),
         const SizedBox(height: 16),
         TextButton(
@@ -259,17 +245,6 @@ class EmailVerificationScreen extends StatelessWidget {
         style: TextStyle(
           fontSize: 12,
           color: AppColors.getBodyTextColor(context).withOpacity(0.4),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLoadingOverlay() {
-    return Container(
-      color: Colors.black26,
-      child: const Center(
-        child: CircularProgressIndicator(
-          valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
         ),
       ),
     );

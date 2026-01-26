@@ -112,17 +112,19 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
       children: List.generate(
         widget.length,
         (index) => SizedBox(
-          width: 50,
-          height: 60,
-          child: CallbackShortcuts(
-            bindings: {
-              const SingleActivator(LogicalKeyboardKey.backspace): () {
+          width: 48,
+          height: 48,
+          child: KeyboardListener(
+            focusNode: FocusNode(),
+            onKeyEvent: (event) {
+              if (event is KeyDownEvent &&
+                  event.logicalKey == LogicalKeyboardKey.backspace) {
                 if (_controllers[index].text.isEmpty && index > 0) {
                   _focusNodes[index - 1].requestFocus();
                   _controllers[index - 1].clear();
                   _otpValues[index - 1] = '';
                 }
-              },
+              }
             },
             child: TextField(
               controller: _controllers[index],
@@ -159,7 +161,17 @@ class _OtpInputWidgetState extends State<OtpInputWidget> {
                   ),
                 ),
               ),
-              onChanged: (value) => _onChanged(index, value),
+              onChanged: (value) {
+                if (value.isNotEmpty && _controllers[index].text.length > 1) {
+                  _controllers[index].text = value.characters.last;
+                }
+                _onChanged(index, _controllers[index].text);
+              },
+              onTap: () {
+                _controllers[index].selection = TextSelection.fromPosition(
+                  TextPosition(offset: _controllers[index].text.length),
+                );
+              },
             ),
           ),
         ),

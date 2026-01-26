@@ -47,6 +47,7 @@ class EmailVerificationBloc
 
     await Future.delayed(const Duration(seconds: 2));
     if (event.otp == "123456") {
+      _timer?.cancel();
       emit(state.copyWith(status: EmailVerificationStatus.success));
     } else {
       emit(
