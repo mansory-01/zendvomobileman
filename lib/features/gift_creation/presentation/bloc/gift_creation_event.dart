@@ -96,3 +96,8 @@ class MessageChanged extends GiftCreationEvent {
 class GiftSubmitted extends GiftCreationEvent {
   const GiftSubmitted();
 }
+
+/// Triggered from the Review screen when the user taps "Proceed"
+class ProceedGiftPayment extends GiftCreationEvent {
+  const ProceedGiftPayment();
+}

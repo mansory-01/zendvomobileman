@@ -20,6 +20,7 @@ class GiftCreationBloc extends Bloc<GiftCreationEvent, GiftCreationState> {
     on<UnlockTimeSelected>(_onUnlockTimeSelected);
     on<MessageChanged>(_onMessageChanged);
     on<GiftSubmitted>(_onGiftSubmitted);
+    on<ProceedGiftPayment>(_onProceedGiftPayment);
   }
 
   GiftCreationFormState get _form => state is GiftCreationFormState
@@ -135,5 +136,22 @@ class GiftCreationBloc extends Bloc<GiftCreationEvent, GiftCreationState> {
 
     await Future.delayed(const Duration(seconds: 1));
     emit(const GiftCreationSuccess(giftCode: 'GIFT-001'));
+  }
+
+  Future<void> _onProceedGiftPayment(
+    ProceedGiftPayment event,
+    Emitter<GiftCreationState> emit,
+  ) async {
+    emit(const GiftCreationLoading());
+
+    // TODO: Replace the stub below with a real payment / gift confirmation call.
+    // final result = await _repository.confirmGift(_form.toModel().toJson());
+    // result.fold(
+    //   (failure) => emit(GiftCreationError(message: failure.message)),
+    //   (code)    => emit(GiftCreationSuccess(giftCode: code)),
+    // );
+
+    await Future.delayed(const Duration(seconds: 1));
+    emit(const GiftCreationSuccess(giftCode: 'GIFT-CONFIRMED'));
   }
 }
