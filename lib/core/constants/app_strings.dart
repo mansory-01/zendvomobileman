@@ -76,4 +76,11 @@ class AppStrings {
   static const String reviewZendvoTerms = "Zendvo terms";
   static const String reviewLegalMid = " and ";
   static const String reviewPrivacyPolicy = "Privacy Policy";
+
+  // Gift Success Modal
+  static const String modalName = "Modal Name";
+  static const String giftSentSuccessfully = "Gift sent successfully";
+  static const String giftSentSubtitlePrefix = "You have successfully gifted ";
+  static const String giftSentSubtitleSuffix =
+      ". You will be receiving email shortly";
 }
