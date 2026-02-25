@@ -83,4 +83,11 @@ class AppStrings {
   static const String giftSentSubtitlePrefix = "You have successfully gifted ";
   static const String giftSentSubtitleSuffix =
       ". You will be receiving email shortly";
+
+  // Create New Password Screen
+  static const String createNewPasswordTitle = "Create new password";
+  static const String createNewPasswordSubtitle =
+      "Create a new secure password for future access to your Zendvo account.";
+  static const String enterNewPasswordLabel = "Enter new password";
+  static const String createNewPasswordButton = "Create new password";
 }
