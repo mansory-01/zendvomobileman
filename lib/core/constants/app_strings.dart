@@ -40,4 +40,40 @@ class AppStrings {
   static const String createAccountButton = "Create Account";
   static const String alreadyHaveAccount = "Already have an account? ";
   static const String logIn = "Log in";
+
+  // Send a Gift Screen
+  static const String sendAGiftTitle = "Send a Gift";
+  static const String sendAGiftSubtitle =
+      "Enter recipient details to send a gift";
+  static const String recipientNoLabel = "Recipient No.";
+  static const String enterAmountLabel = "Enter amount";
+  static const String amountHint = "\$ 5.00 - 1,000";
+  static const String hideAmountLabel = "Hide amount until unlocked";
+  static const String stayAnonymousLabel = "Stay anonymous\nuntil unlock";
+  static const String selectUnlockDateLabel = "Select unlock date and time";
+  static const String datePlaceholder = "dd.mm.yyyy";
+  static const String timePlaceholder = "00:00 am";
+  static const String messageLabel = "Message";
+  static const String messagePlaceholder = "I dey feel your hustle";
+  static const String continueButton = "Continue";
+
+  // Review Gift Details Screen
+  static const String reviewGiftTitle = "Review Gift details";
+  static const String reviewGiftSubtitle =
+      "Please review all details carefully, transactions once completed are irreversible";
+  static const String reviewRecipient = "Recipient";
+  static const String reviewAmount = "Amount";
+  static const String reviewProcessingFee = "Processing Fee";
+  static const String reviewTotalAmount = "Total Amount";
+  static const String reviewAmountPrivacy = "Amount Privacy";
+  static const String reviewSenderPrivacy = "Sender Privacy";
+  static const String reviewUnlockDateTime = "Unlock date and time";
+  static const String reviewMessageForSender = "Message for the sender";
+  static const String reviewHideAmountSent = "Hide amount sent";
+  static const String reviewAnonymous = "Anonymous";
+  static const String proceedButton = "Proceed";
+  static const String reviewLegalPrefix = "By proceeding, you have accepted ";
+  static const String reviewZendvoTerms = "Zendvo terms";
+  static const String reviewLegalMid = " and ";
+  static const String reviewPrivacyPolicy = "Privacy Policy";
 }

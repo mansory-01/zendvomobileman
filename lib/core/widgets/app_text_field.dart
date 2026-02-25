@@ -13,6 +13,7 @@ class AppTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool readOnly;
   final VoidCallback? onTap;
+  final ValueChanged<String>? onChanged;
 
   const AppTextField({
     super.key,
@@ -26,6 +27,7 @@ class AppTextField extends StatefulWidget {
     this.validator,
     this.readOnly = false,
     this.onTap,
+    this.onChanged,
   });
 
   @override
@@ -47,6 +49,7 @@ class _AppTextFieldState extends State<AppTextField> {
           obscureText: widget.isPassword ? _obscureText : false,
           readOnly: widget.readOnly,
           onTap: widget.onTap,
+          onChanged: widget.onChanged,
           validator: widget.validator,
           style: const TextStyle(
             fontSize: 16,
