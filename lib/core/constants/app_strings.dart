@@ -40,4 +40,20 @@ class AppStrings {
   static const String createAccountButton = "Create Account";
   static const String alreadyHaveAccount = "Already have an account? ";
   static const String logIn = "Log in";
+
+  // Send a Gift Screen
+  static const String sendAGiftTitle = "Send a Gift";
+  static const String sendAGiftSubtitle =
+      "Enter recipient details to send a gift";
+  static const String recipientNoLabel = "Recipient No.";
+  static const String enterAmountLabel = "Enter amount";
+  static const String amountHint = "\$ 5.00 - 1,000";
+  static const String hideAmountLabel = "Hide amount until unlocked";
+  static const String stayAnonymousLabel = "Stay anonymous\nuntil unlock";
+  static const String selectUnlockDateLabel = "Select unlock date and time";
+  static const String datePlaceholder = "dd.mm.yyyy";
+  static const String timePlaceholder = "00:00 am";
+  static const String messageLabel = "Message";
+  static const String messagePlaceholder = "I dey feel your hustle";
+  static const String continueButton = "Continue";
 }
